@@ -1,4 +1,6 @@
-import 'package:curie/screens/home_screen.dart';
+import 'package:curie/data/json_data.dart';
+import 'package:curie/models/form_model.dart';
+import 'package:curie/screens/form_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,8 +12,11 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomeScreen(),
+    final FormPageModel formPageModel = FormPageModel.fromJson(jsonData);
+    return MaterialApp(
+      home: DynamicForm(
+        data: formPageModel,
+      ),
     );
   }
 }
