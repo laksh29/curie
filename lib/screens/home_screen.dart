@@ -56,9 +56,11 @@ class HomeScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // header
+                  (height * 0.07).whitespaceHeight,
+
                   const HomePageHeader(),
                   //
-                  (height * 0.13).whitespaceHeight,
+                  (height * 0.08).whitespaceHeight,
 
                   SizedBox(
                     height: height * 0.28,
