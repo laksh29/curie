@@ -35,16 +35,20 @@ class _CustomButtonState extends State<CustomButton>
 
   late AnimationController controller;
 
+  late Animation<double> depthAnimation;
+  late Animation<double> shadowAnimation;
+
   @override
   void initState() {
     super.initState();
     controller = AnimationController(
       vsync: this,
-      lowerBound: 0,
-      upperBound: 1,
       duration: Duration(milliseconds: durationMill),
       reverseDuration: Duration(milliseconds: durationMill),
     );
+
+    depthAnimation = Tween<double>(begin: 0, end: 3).animate(controller);
+    shadowAnimation = Tween<double>(begin: 3, end: 0).animate(controller);
   }
 
   @override
@@ -59,8 +63,8 @@ class _CustomButtonState extends State<CustomButton>
       animation: controller,
       builder: (context, child) {
         log("value : ${controller.value}");
-        final double depth = 2 * controller.value;
-        final double shadow = 3 - controller.value;
+        final double depth = depthAnimation.value;
+        final double shadow = shadowAnimation.value;
 
         return Transform.translate(
           offset: Offset(depth, depth),
