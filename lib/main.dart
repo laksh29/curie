@@ -12,10 +12,18 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final FormPageModel formPageModel = FormPageModel.fromJson(jsonData);
+    // final FormPageModel formPageModel = FormPageModel.fromJson(jsonData);
+
+    final List<FormPageModel> formPageList = [];
+
+    for (var x in jsonList) {
+      formPageList.add(FormPageModel.fromJson(x));
+    }
+
     return MaterialApp(
       home: DynamicForm(
-        data: formPageModel,
+        // data: formPageModel,
+        dataList: formPageList,
       ),
     );
   }
